@@ -74,7 +74,7 @@
     -->
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-chart">
             <div class="card-header card-header-success">
               <div class="ct-chart" id="dailySalesChart"></div>
@@ -91,7 +91,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-chart">
             <div class="card-header card-header-warning">
               <div class="ct-chart" id="websiteViewsChart"></div>
@@ -107,7 +107,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+
+        {{-- <div class="col-md-2">
           <div class="card card-chart">
             <div class="card-header card-header-danger">
               <div class="ct-chart" id="completedTasksChart"></div>
@@ -123,7 +124,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
+
       <!--
       <div class="row">
         <div class="col-lg-6 col-md-12">
@@ -448,18 +450,20 @@
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
+      /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+
     //   dataDailySalesChart = {
-    //     //labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    //     labels: [
-    //         @foreach ($recharges as $recharge)
-    //             [ "{{ $recharge->created_at->format('d') }}"],
-    //         @endforeach
-    //     ],
+    //     labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    //     // labels: [
+    //     //     @foreach ($recharges as $recharge)
+    //     //         [ "{{ $recharge->created_at->format('d') }}"],
+    //     //     @endforeach
+    //     // ],
     //     series: [
-    //         //[12, 17, 7, 17, 23, 18, 38]
-    //         @foreach ($recharges as $recharge)
-    //             [ "{{ $recharge->amount }}" ],
-    //         @endforeach
+    //         [12, 17, 7, 17, 23, 18, 38]
+    //         // @foreach ($recharges as $recharge)
+    //         //     [ "{{ $recharge->amount }}" ],
+    //         // @endforeach
     //     ]
 
     //   };
@@ -482,7 +486,9 @@
 
     //   md.startAnimationForLineChart(dailySalesChart);
 
-    // dataCompletedTasksChart = {
+    //   /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
+
+    //   dataCompletedTasksChart = {
     //     labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
     //     series: [
     //       [230, 750, 450, 300, 280, 240, 200, 190]

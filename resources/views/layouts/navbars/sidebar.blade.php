@@ -25,7 +25,7 @@
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse show" id="recharge">
+        <div class="collapse" id="recharge">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'recharge' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('recharge') }}">
@@ -55,7 +55,7 @@
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse show" id="report">
+        <div class="collapse" id="report">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'Recharge Report' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('recharge_report') }}">
@@ -101,6 +101,12 @@
                 <i class="material-icons">account_circle</i>
                 <span class="sidebar-normal">{{ __('Profile') }} </span>
               </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('map') }}">
+                    <i class="material-icons">location_ons</i>
+                <p>{{ __('Maps') }}</p>
+                </a>
             </li>
             <li class="nav-item{{ $activePage == 'recharge' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('recharge') }}">
