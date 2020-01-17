@@ -16,7 +16,8 @@
             </div>
             <div class="card-footer">
                 <div class="stats">
-                  <i class="material-icons">date_range</i>Total Transactions to Date
+                  <i class="material-icons">date_range</i>
+                  Total Transactions to Date
                 </div>
               </div>
           </div>
@@ -33,7 +34,8 @@
             <div class="card-footer">
               <div class="stats">
                 <i class="material-icons">account_balance_wallet</i>
-                <a href="#pablo">Total Available Balances to Recharge</a>
+                <a href="#pablo"></a>
+                Total Available Balances to Recharge
               </div>
             </div>
           </div>
@@ -73,36 +75,38 @@
         </div>
     -->
       </div>
+
       <div class="row">
         <div class="col-md-6">
-          <div class="card card-chart">
-            <div class="card-header card-header-success">
-              <div class="ct-chart" id="dailySalesChart"></div>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Daily Sales</h4>
-              <p class="card-category">
-                <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> updated 4 minutes ago
+            <div class="card card-chart">
+              <div class="card-header" id="accountSummaryChart">
+                {!! $chart1->container() !!}
+                {{-- <div class="ct-chart" id="websiteViewsChart"></div> card-header-warning --}}
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Account Summary</h4>
+                <p class="card-category">Account Summary of each Month</p>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="material-icons">account_balance_wallet</i> Available Balance BDT 999
+                </div>
               </div>
             </div>
-          </div>
         </div>
         <div class="col-md-6">
           <div class="card card-chart">
-            <div class="card-header card-header-warning">
-              <div class="ct-chart" id="websiteViewsChart"></div>
+            <div class="card-header" id="transactionHistoryChart">
+              {!! $chart2->container() !!}
+              {{-- <div class="ct-chart" id="dailySalesChart"></div> card-header-success --}}
             </div>
             <div class="card-body">
-              <h4 class="card-title">Email Subscriptions</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Transaction History</h4>
+              <p class="card-category">Transaction History of Current month</p>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                <i class="material-icons">history</i> Last transaction 15/01/2020
               </div>
             </div>
           </div>
