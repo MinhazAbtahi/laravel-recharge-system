@@ -79,7 +79,7 @@
       <div class="row">
         <div class="col-md-6">
             <div class="card card-chart">
-              <div class="card-header" id="accountSummaryChart">
+              <div class="card-header " id="accountSummaryChart">
                 {!! $chart1->container() !!}
                 {{-- <div class="ct-chart" id="websiteViewsChart"></div> card-header-warning --}}
               </div>

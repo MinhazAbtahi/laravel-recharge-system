@@ -26,11 +26,21 @@ class HomeController extends Controller
     {
         $chart1 = new AccountSummaryChart;
         $chart1->labels(['January', 'February', 'March', 'April']);
-        $chart1->dataset('Account Summary', 'bar', [1000, 2000, 3000, 4000]);
+        $chart1->dataset('Debit', 'bar', [rand(500, 2000), 2000, rand(500, 2000), rand(500, 2000)])->color('#FFC107')->backgroundColor('#FFC107');
+        $chart1->dataset('Credit', 'bar', [1000, 2000, rand(500, 2000), rand(500, 2000)])->color('#03A9F4')->backgroundColor('#03A9F4');
+        $chart1->dataset('Balance', 'bar', [1000, rand(500, 2000), 3000, rand(500, 2000)])->color('#8BC34A')->backgroundColor('#8BC34A');
 
         $chart2 = new TransactionHistoryChart;
         $chart2->labels(['01/01/2020', '10/01/2020', '15/01/2020', '20/01/2020']);
-        $chart2->dataset('Transaction History', 'line', [1000, 2000, 3000, 4000]);
+        $chart2->dataset('Debit', 'line', [rand(500, 2000), 2000, rand(500, 2000), rand(500, 2000)])->color('#FFC107')->options([
+            'fill' => false,
+        ]);;
+        $chart2->dataset('Credit', 'line', [1000, 2000, rand(500, 2000), rand(500, 2000)])->color('#03A9F4')->options([
+            'fill' => false,
+        ]);
+        $chart2->dataset('Balance', 'line', [1000, rand(500, 2000), 3000, rand(500, 2000)])->color('#8BC34A')->options([
+            'fill' => false,
+        ]);
 
         $recharges = Recharge::orderBy('created_at', 'asc')->get();
 		return view('dashboard', [
