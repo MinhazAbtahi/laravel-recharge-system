@@ -8,7 +8,7 @@
           <div class="card card-stats">
             <div class="card-header card-header-primary card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">content_copy</i>
+                <i class="material-icons">payment</i>
               </div>
               <p class="card-category">Total Transactions</p>
               <h3 class="card-title">42
@@ -26,7 +26,7 @@
           <div class="card card-stats">
             <div class="card-header card-header-info card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">store</i>
+                <i class="material-icons">account_balance_wallet</i>
               </div>
               <p class="card-category">Balance</p>
               <h3 class="card-title">BDT 999</h3>
@@ -45,14 +45,14 @@
           <div class="card card-stats">
             <div class="card-header card-header-warning card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">info_outline</i>
+                <i class="material-icons">schedule</i>
               </div>
-              <p class="card-category">Pending Tickets</p>
+              <p class="card-category">Ongoing Tickets</p>
               <h3 class="card-title">3</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">autorenew</i> Pending Ticket Status
+                <i class="material-icons">schedule</i> Ongoing Ticket Status
               </div>
             </div>
           </div>
@@ -61,14 +61,14 @@
           <div class="card card-stats">
             <div class="card-header card-header-success card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">info_outline</i>
+                <i class="material-icons">feedback</i>
               </div>
               <p class="card-category">Resolved Tickets</p>
               <h3 class="card-title">5</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">done_all</i> Resolved Ticket Status
+                <i class="material-icons">feedback</i> Resolved Ticket Status
               </div>
             </div>
           </div>
