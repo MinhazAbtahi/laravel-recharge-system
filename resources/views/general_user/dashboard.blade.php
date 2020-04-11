@@ -75,6 +75,129 @@
           </div>
         </div>
 
+        {{-- Admin --}}
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Pending Requests</p>
+                <h3 class="card-title">32
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                <div class="stats">
+                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                      View Details
+                  </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-secondary card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Unpaid Requests</p>
+                <h3 class="card-title">20
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                <div class="stats">
+                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                      View Details
+                  </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Successful Requests</p>
+                <h3 class="card-title">50
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                <div class="stats">
+                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                      View Details
+                  </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Failed Requests</p>
+                <h3 class="card-title">42
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                  <div class="stats">
+                    <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                        View Details
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-primary card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Total Requests</p>
+                <h3 class="card-title">150
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                <div class="stats">
+                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                      View Details
+                  </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                  <i class="material-icons">assessment</i>
+                </div>
+                <p class="card-category">Successful Recharge</p>
+                <h3 class="card-title">50
+                </h3>
+              </div>
+              <div class="card-footer">
+                <i class="material-icons">table_chart</i>
+                <div class="stats">
+                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                      View Details
+                  </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+
       {{-- User Charts --}}
       <div class="row">
         <div class="col-md-6">
