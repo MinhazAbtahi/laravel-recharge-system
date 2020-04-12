@@ -57,21 +57,34 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect('recharge')->withStatus(__('Recharge Successfully Completed'));
     })->name('recharge.edit');
 
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
+	Route::get('stock_balance', function () {
+        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+		return view('admin.stock_balance', [
+            'recharges' => $recharges
+        ]);
+	})->name('stock_balance');
 
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
+	Route::get('sales', function () {
+        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+		return view('admin.sales', [
+            'recharges' => $recharges
+        ]);
+	})->name('sales');
 
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
+    Route::get('admin_recharge_report', function () {
+        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+		return view('admin.recharge_report', [
+            'recharges' => $recharges
+        ]);
+    })->name('admin_recharge_report');
 
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
+	Route::get('recharge_request', function () {
+		return view('admin.recharge_request');
+	})->name('recharge_request');
+
+	Route::get('admin_invoice', function () {
+		return view('admin.invoice');
+	})->name('admin_invoice');
 
 	Route::get('rtl-support', function () {
 		return view('pages.language');
