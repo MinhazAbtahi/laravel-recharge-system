@@ -11,6 +11,7 @@
 |
 */
 use App\Recharge;
+use App\Ticket;
 use Illuminate\Http\Request;
 
 
@@ -57,6 +58,23 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect('recharge')->withStatus(__('Recharge Successfully Completed'));
     })->name('recharge.edit');
 
+    Route::get('ticket', function () {
+		return view('corporate_user.ticket');
+	})->name('ticket');
+
+    Route::post('ticket', function (Request $request) {
+        $ticket = new Ticket;
+        $ticket->user_name = Auth::user()->name;
+        $ticket->user_id = Auth::user()->id;
+        $ticket->ticket_type = $request->ticket_type;
+        $ticket->ticket_for = $request->ticket_for;
+        $ticket->description = $request->description;
+        $ticket->status = 'Succeed';
+        $ticket->save();
+
+        return redirect('ticket')->withStatus(__('Ticket Successfully Submitted'));
+    })->name('ticket.edit');
+
 	Route::get('stock_balance', function () {
         $recharges = Recharge::orderBy('created_at', 'asc')->get();
 		return view('admin.stock_balance', [
@@ -77,6 +95,13 @@ Route::group(['middleware' => 'auth'], function () {
             'recharges' => $recharges
         ]);
     })->name('admin_recharge_report');
+
+    Route::get('admin_ticket', function () {
+        $tickets = Ticket::orderBy('created_at', 'asc')->get();
+		return view('admin.tickets', [
+            'tickets' => $tickets
+        ]);
+    })->name('admin_ticket');
 
 	Route::get('recharge_request', function () {
 		return view('admin.recharge_request');

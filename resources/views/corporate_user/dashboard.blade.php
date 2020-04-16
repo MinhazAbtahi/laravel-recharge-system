@@ -387,7 +387,7 @@
             </div>
             <div class="card-body table-responsive">
               <table class="table table-striped table-bordered table-hover">
-                <thead class="text-warning">
+                {{-- <thead class="text-warning">
                   <th>ID</th>
                   <th>Time</th>
                   <th>Description</th>
@@ -436,7 +436,37 @@
                     <td>38</td>
                     <td>860</td>
                   </tr>
-                </tbody>
+                </tbody> --}}
+                <thead class=" text-primary">
+                    <tr>
+                      <th class="center">#ID</th>
+                      <th>Time</th>
+                      <th>Description</th>
+                      <th>Debit</th>
+                      <th>Credit</th>
+                      <th>Balance</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($ledger as $entry)
+                          <tr>
+                              <td>{{ $entry->id }}</td>
+                              <td>{{ $entry->created_at }}</td>
+                              <td class="text-secondary">
+                                  <strong>{{ $entry->description }}</strong>
+                              </td>
+                              <td class="text-secondary">
+                                  <strong>{{ $entry->debit }}</strong>
+                              </td>
+                              <td class="text-primary">
+                                  <strong>{{ $entry->credit }}</strong>
+                              </td>
+                              <td class="text-success">
+                                  <strong>{{ $entry->balance }}</strong>
+                              </td>
+                          </tr>
+                      @endforeach
+                  </tbody>
                 <tfoot>
                     <tr>
                     </tr>

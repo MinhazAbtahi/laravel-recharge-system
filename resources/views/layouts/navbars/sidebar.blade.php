@@ -76,7 +76,7 @@
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'tickets' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin_ticket') }}">
           <i class="material-icons">account_circle</i>
             <p>{{ __('Tickets') }}</p>
         </a>
@@ -183,7 +183,7 @@
             </a>
           </li>
           <li class="nav-item{{ $activePage == 'tickets' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('user.index') }}">
+            <a class="nav-link" href="{{ route('ticket') }}">
               <i class="material-icons">live_help</i>
                 <p>{{ __('Tickets') }}</p>
             </a>

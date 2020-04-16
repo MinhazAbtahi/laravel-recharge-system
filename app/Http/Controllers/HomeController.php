@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
+use App\Ledger;
+use App\Recharge;
 use App\Charts\AccountSummaryChart;
 use App\Charts\TransactionHistoryChart;
-use App\Recharge;
 
 class HomeController extends Controller
 {
@@ -47,8 +48,10 @@ class HomeController extends Controller
                 'fill' => false,
             ]);
 
+            $ledger = Ledger::where('user_id', $user->id)->get();
             $recharges = Recharge::orderBy('created_at', 'asc')->get();
             return view('corporate_user.dashboard', [
+                'ledger' => $ledger,
                 'recharges' => $recharges,
                 'chart1' => $chart1,
                 'chart2' => $chart2
