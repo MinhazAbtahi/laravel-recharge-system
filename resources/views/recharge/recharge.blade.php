@@ -14,18 +14,33 @@
                 <p class="card-category">{{ __('User information') }}</p>
               </div>
               <div class="card-body ">
-                @if (session('status'))
+                {{-- @if (session('status') == 'completed') --}}
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="alert alert-success">
+                        {{-- <a href="{{ route('recharge_report') }}" class="btn btn-primary text-right">{{ __('View Report') }}</a> --}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <i class="material-icons">close</i>
                         </button>
-                        <span>{{ session('status') }}</span>
+                        {{-- <button type="button" class="btn btn-info btn-sm close"  aria-label="Close">
+                            <a href="{{ route('recharge_report') }}">{{ __('View Report') }}</a>
+                        </button> --}}
+                        <span>{{ 'Recharge Successfully Completed!' }}</span>
                       </div>
                     </div>
                   </div>
-                @endif
+                  {{-- @elseif (session('status') == 'failed') --}}
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ 'Recharge Failed. Not Enough Balance!' }}</span>
+                      </div>
+                    </div>
+                  </div>
+                {{-- @endif --}}
                 <div class="row">
                     <label class="col-sm-2 col-form-label">{{ __('Operator Type') }}</label>
                     <div class="col-sm-7">

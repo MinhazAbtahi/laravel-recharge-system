@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Ledger;
+use App\Ticket;
 use App\Recharge;
+use App\Account;
 use App\Charts\AccountSummaryChart;
 use App\Charts\TransactionHistoryChart;
 
@@ -48,17 +50,26 @@ class HomeController extends Controller
                 'fill' => false,
             ]);
 
+            $account = Account::where('user_id', $user->id)->first();
             $ledger = Ledger::where('user_id', $user->id)->get();
+            $tickets = Ticket::where('user_id', $user->id)->get();
             $recharges = Recharge::orderBy('created_at', 'asc')->get();
             return view('corporate_user.dashboard', [
+                'account' => $account,
                 'ledger' => $ledger,
+                'tickets' => $tickets,
                 'recharges' => $recharges,
                 'chart1' => $chart1,
                 'chart2' => $chart2
             ]);
         }
         else if($user->getUserRole() == 'admin') {
-            return view('admin.dashboard');
+            $account = Account::where('user_id', $user->id)->get();
+            $tickets = Ticket::where('user_id', $user->id)->get();
+            return view('admin.dashboard', [
+                'account' => $account,
+                'tickets' => $tickets
+            ]);
         }
 
         return view('admin.dashboard');

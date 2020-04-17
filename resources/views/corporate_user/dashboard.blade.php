@@ -12,8 +12,7 @@
                 <i class="material-icons">payment</i>
               </div>
               <p class="card-category">Total Transactions</p>
-              <h3 class="card-title">42
-              </h3>
+                <h3 class="card-title">{{ $ledger->count() }}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -30,7 +29,7 @@
                 <i class="material-icons">account_balance_wallet</i>
               </div>
               <p class="card-category">Balance</p>
-              <h3 class="card-title">BDT 999</h3>
+              <h3 class="card-title">BDT {{ $account->balance }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -49,7 +48,7 @@
                 <i class="material-icons">schedule</i>
               </div>
               <p class="card-category">Ongoing Tickets</p>
-              <h3 class="card-title">3</h3>
+              <h3 class="card-title">{{ $tickets->count() }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -65,7 +64,7 @@
                 <i class="material-icons">library_add_check</i>
               </div>
               <p class="card-category">Resolved Tickets</p>
-              <h3 class="card-title">5</h3>
+              <h3 class="card-title">0</h3>
             </div>
             <div class="card-footer">
               <div class="stats">

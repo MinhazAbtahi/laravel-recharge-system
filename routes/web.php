@@ -12,6 +12,8 @@
 */
 use App\Recharge;
 use App\Ticket;
+use App\Account;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 
@@ -28,14 +30,16 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('table');
 
     Route::get('recharge-report', function () {
-        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+        $user = Auth::user();
+        $recharges = Recharge::where('user', $user->name)->orderBy('created_at', 'asc')->get();
 		return view('pages.recharge_report', [
             'recharges' => $recharges
         ]);
     })->name('recharge_report');
 
     Route::get('refill-report', function () {
-        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+        $user = Auth::user();
+        $recharges = Recharge::where('user', $user->name)->orderBy('created_at', 'asc')->get();
 		return view('pages.refill_report', [
             'recharges' => $recharges
         ]);
@@ -46,16 +50,33 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('recharge');
 
     Route::post('recharge', function (Request $request) {
-        $recharge = new Recharge;
-        $recharge->user = Auth::user()->name;
-        $recharge->mobile_no = $request->mobile_no;
-        $recharge->amount = $request->amount;
-        $recharge->type = $request->type;
-        $recharge->operator = $request->operator;
-        $recharge->status = 'Succeed';
-        $recharge->save();
+        $user = Auth::user();
+        $account = Account::where('user_id', $user->id)->first();
+        if($request->amount <= $account->balance) {
+            $recharge = new Recharge;
+            $recharge->user = Auth::user()->name;
+            $recharge->mobile_no = $request->mobile_no;
+            $recharge->amount = $request->amount;
+            $recharge->type = $request->type;
+            $recharge->operator = $request->operator;
+            $recharge->status = 'Succeed';
+            $recharge->save();
 
-        return redirect('recharge')->withStatus(__('Recharge Successfully Completed'));
+            $account->balance = $account->balance - $recharge->amount;
+            $account->save();
+
+            $ledger = new Ledger;
+            $ledger->user_id = $user->id;
+            $ledger->debit = $recharge->amount;
+            $ledger->credit = 0;
+            $ledger->balance = $account->balance;
+            $ledger->description = $recharge->mobile_no.' Number Recharged. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f';
+            $ledger->save();
+
+            return redirect('recharge')->withStatus(__('completed'));
+        }
+
+        return redirect('recharge')->withStatus(__('failed'));
     })->name('recharge.edit');
 
     Route::get('ticket', function () {

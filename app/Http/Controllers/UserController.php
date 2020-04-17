@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Account;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,7 +39,11 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $user = $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $account = new Account;
+        $account->user_id = $user->id;
+        $account->balance = 100;
+        $account->save();
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
