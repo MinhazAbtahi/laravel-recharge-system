@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('recharge', function (Request $request) {
         $user = Auth::user();
         $account = Account::where('user_id', $user->id)->first();
-        if($request->amount <= $account->balance) {
+        if($account->balance > 0 && $request->amount <= $account->balance) {
             $recharge = new Recharge;
             $recharge->user = Auth::user()->name;
             $recharge->mobile_no = $request->mobile_no;
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
             $ledger->debit = $recharge->amount;
             $ledger->credit = 0;
             $ledger->balance = $account->balance;
-            $ledger->description = $recharge->mobile_no.' Number Recharged. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f';
+            $ledger->description = $recharge->mobile_no.' Recharged with Tk.'.$recharge->amount.'. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f';
             $ledger->save();
 
             return redirect('recharge')->withStatus(__('completed'));

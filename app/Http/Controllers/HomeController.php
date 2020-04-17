@@ -51,7 +51,7 @@ class HomeController extends Controller
             ]);
 
             $account = Account::where('user_id', $user->id)->first();
-            $ledger = Ledger::where('user_id', $user->id)->get();
+            $ledger = Ledger::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
             $tickets = Ticket::where('user_id', $user->id)->get();
             $recharges = Recharge::orderBy('created_at', 'asc')->get();
             return view('corporate_user.dashboard', [

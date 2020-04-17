@@ -14,7 +14,7 @@
                 <p class="card-category">{{ __('User information') }}</p>
               </div>
               <div class="card-body ">
-                {{-- @if (session('status') == 'completed') --}}
+                @if (session('status') == 'completed')
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="alert alert-success">
@@ -29,7 +29,7 @@
                       </div>
                     </div>
                   </div>
-                  {{-- @elseif (session('status') == 'failed') --}}
+                  @elseif (session('status') == 'failed')
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="alert alert-danger">
@@ -40,7 +40,7 @@
                       </div>
                     </div>
                   </div>
-                {{-- @endif --}}
+                @endif
                 <div class="row">
                     <label class="col-sm-2 col-form-label">{{ __('Operator Type') }}</label>
                     <div class="col-sm-7">
