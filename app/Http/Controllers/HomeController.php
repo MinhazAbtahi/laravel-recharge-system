@@ -64,9 +64,11 @@ class HomeController extends Controller
             ]);
         }
         else if($user->getUserRole() == 'admin') {
+            $recharges = Recharge::orderBy('created_at', 'asc')->get();
             $account = Account::where('user_id', $user->id)->get();
             $tickets = Ticket::where('user_id', $user->id)->get();
             return view('admin.dashboard', [
+                'recharges' => $recharges,
                 'account' => $account,
                 'tickets' => $tickets
             ]);

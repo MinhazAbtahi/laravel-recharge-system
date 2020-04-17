@@ -25,8 +25,8 @@
                         <tr>
                             <td>{{ $recharge->id }}</td>
                             <td>{{ $recharge->operator }}</td>
-                            <td class="text-success">
-                                <strong>{{ $recharge->status }}</strong>
+                            <td class="text-primary">
+                                <strong>{{ $recharge->amount }}</strong>
                             </td>
                         </tr>
                     @endforeach
