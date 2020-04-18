@@ -80,15 +80,14 @@
             <div class="card card-chart">
               <div class="card-header " id="accountSummaryChart">
                 {!! $chart1->container() !!}
-                {{-- <div class="ct-chart" id="websiteViewsChart"></div> card-header-warning --}}
               </div>
               <div class="card-body">
                 <h4 class="card-title">Account Summary</h4>
-                <p class="card-category">Account Summary of each Month</p>
+                <p class="card-category">Account Summary of Current Month</p>
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="material-icons">account_balance_wallet</i> Available Balance BDT 999
+                  <i class="material-icons">account_balance_wallet</i> Available Balance BDT {{ $account->balance }}
                 </div>
               </div>
             </div>
@@ -97,7 +96,6 @@
           <div class="card card-chart">
             <div class="card-header" id="transactionHistoryChart">
               {!! $chart2->container() !!}
-              {{-- <div class="ct-chart" id="dailySalesChart"></div> card-header-success --}}
             </div>
             <div class="card-body">
               <h4 class="card-title">Transaction History</h4>
@@ -105,7 +103,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">history</i> Last transaction 15/01/2020
+                <i class="material-icons">history</i> Last transaction on  15/01/2020
               </div>
             </div>
           </div>
@@ -382,60 +380,10 @@
           <div class="card">
             <div class="card-header card-header-warning">
               <h4 class="card-title">Ledger</h4>
-              <p class="card-category">New employees on 15th September, 2016</p>
+              <p class="card-category">Last Transaction on {{15/01/2020}}</p>
             </div>
             <div class="card-body table-responsive">
               <table class="table table-striped table-bordered table-hover">
-                {{-- <thead class="text-warning">
-                  <th>ID</th>
-                  <th>Time</th>
-                  <th>Description</th>
-                  <th>Debit</th>
-                  <th>Credit</th>
-                  <th>Balance</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Saturday, 27 Jul 2019 at 05:35:52 am</td>
-                    <td>2 Number(s) Recharge. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f</td>
-                    <td>0</td>
-                    <td>38</td>
-                    <td>1012</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Saturday, 27 Jul 2019 at 05:34:58 am</td>
-                    <td>2 Number(s) Recharge. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f</td>
-                    <td>0</td>
-                    <td>38</td>
-                    <td>974</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Saturday, 27 Jul 2019 at 05:29:30 am</td>
-                    <td>2 Number(s) Recharge. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f</td>
-                    <td>0</td>
-                    <td>38</td>
-                    <td>936</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Friday, 1 June 2019 at 05:35:52 am</td>
-                    <td>2 Number(s) Recharge. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f</td>
-                    <td>0</td>
-                    <td>38</td>
-                    <td>898</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Friday, 1 June 2019 at 05:29:20 am</td>
-                    <td>2 Number(s) Recharge. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f</td>
-                    <td>0</td>
-                    <td>38</td>
-                    <td>860</td>
-                  </tr>
-                </tbody> --}}
                 <thead class=" text-primary">
                     <tr>
                       <th class="center">#ID</th>
@@ -450,7 +398,7 @@
                       @foreach ($ledger as $entry)
                           <tr>
                               <td>{{ $entry->id }}</td>
-                              <td>{{ $entry->created_at }}</td>
+                              <td>{{ $entry->created_at->toDayDateTimeString() }}</td>
                               <td class="text-secondary">
                                   <strong>{{ $entry->description }}</strong>
                               </td>
