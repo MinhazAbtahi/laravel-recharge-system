@@ -41,7 +41,7 @@ class HomeController extends Controller
             $recharges = Recharge::orderBy('created_at', 'desc')->get();
 
             $current_month = date('m');
-            $account_summary_data = Ledger::select('debit', 'credit', 'balance', 'created_at')->whereRaw('MONTH(created_at) = ?',[$current_month])->get();
+            $account_summary_data = Ledger::select('debit', 'credit', 'balance', 'created_at')->where('user_id', $user->id)->whereRaw('MONTH(created_at) = ?',[$current_month])->get();
             $labels = array();
             $debits = array();
             $credits = array();
