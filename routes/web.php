@@ -11,6 +11,7 @@
 |
 */
 use App\Recharge;
+use App\Operator;
 use App\Ticket;
 use App\Account;
 use App\Ledger;
@@ -29,6 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.table_list');
     })->name('table');
 
+    Route::get('operators', function () {
+        $user = Auth::user();
+        $operators = Operator::where('user_id', $user->user_id)->orderBy('created_at', 'asc')->get();
+		return view('corporate_user.operators', [
+            'operators' => $operators
+        ]);
+    })->name('operators');
+
     Route::get('recharge-report', function () {
         $user = Auth::user();
         $recharges = Recharge::where('user', $user->name)->orderBy('created_at', 'asc')->get();
@@ -45,9 +54,17 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
 	})->name('refill_report');
 
-    Route::get('recharge', function () {
-		return view('recharge.recharge');
-	})->name('recharge');
+    Route::get('topup_recharge', function () {
+		return view('recharge.topup_recharge');
+    })->name('topup_recharge');
+
+    Route::get('skitto_recharge', function () {
+		return view('recharge.skitto_recharge');
+    })->name('skitto_recharge');
+
+    Route::get('bulk_recharge', function () {
+		return view('recharge.bulk_recharge');
+	})->name('bulk_recharge');
 
     Route::post('recharge', function (Request $request) {
         $user = Auth::user();
@@ -90,7 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
         $ticket->ticket_type = $request->ticket_type;
         $ticket->ticket_for = $request->ticket_for;
         $ticket->description = $request->description;
-        $ticket->status = 'Succeed';
+        $ticket->status = 'Pending';
         $ticket->save();
 
         return redirect('ticket')->withStatus(__('Ticket Successfully Submitted'));

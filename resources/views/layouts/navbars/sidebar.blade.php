@@ -11,9 +11,8 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-    @if(Auth::user()->role == 'admin')
-
     {{-- Admin --}}
+    @if(Auth::user()->role == 'admin')
     <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
@@ -42,20 +41,20 @@
         </a>
         <div class="collapse" id="recharge">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'recharge' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('recharge') }}">
+            <li class="nav-item{{ $activePage == 'topup_recharge' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('topup_recharge') }}">
                 <i class="material-icons">mobile_screen_share</i>
                 <span class="sidebar-normal">{{ __('TopUp Recharge') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('recharge') }}">
+                <a class="nav-link" href="{{ route('skitto_recharge') }}">
                     <i class="material-icons">mobile_screen_share</i>
                   <span class="sidebar-normal"> {{ __('Skitto Recharge') }} </span>
                 </a>
             </li>
             <li class="nav-item{{ $activePage == 'bulk_recharge' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('recharge') }}">
+                <a class="nav-link" href="{{ route('bulk_recharge') }}">
                     <i class="material-icons">mobile_screen_share</i>
                   <span class="sidebar-normal"> {{ __('Bulk Recharge') }} </span>
                 </a>
@@ -63,7 +62,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'recharge' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'admin_recharge_report' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('admin_recharge_report') }}">
           <i class="material-icons">timeline</i>
           <p>{{ __('Recharge History') }}</p>
@@ -105,10 +104,8 @@
             <p>{{ __('Inbox') }}</p>
         </a>
       </li>
-
-      @elseif(Auth::user()->role == 'corporate user' || Auth::user()->role == 'user')
-
     {{-- Corporate User --}}
+      @elseif(Auth::user()->role == 'corporate user' || Auth::user()->role == 'user')
           <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="material-icons">dashboard</i>
@@ -125,20 +122,20 @@
             </a>
             <div class="collapse" id="recharge">
               <ul class="nav">
-                <li class="nav-item{{ $activePage == 'recharge' ? ' active' : '' }}">
-                  <a class="nav-link" href="{{ route('recharge') }}">
+                <li class="nav-item{{ $activePage == 'topup_recharge' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('topup_recharge') }}">
                     <i class="material-icons">mobile_screen_share</i>
                     <span class="sidebar-normal">{{ __('TopUp Recharge') }} </span>
                   </a>
                 </li>
                 <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('recharge') }}">
+                    <a class="nav-link" href="{{ route('skitto_recharge') }}">
                         <i class="material-icons">mobile_screen_share</i>
                       <span class="sidebar-normal"> {{ __('Skitto Recharge') }} </span>
                     </a>
                 </li>
                 <li class="nav-item{{ $activePage == 'bulk_recharge' ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('recharge') }}">
+                    <a class="nav-link" href="{{ route('bulk_recharge') }}">
                         <i class="material-icons">mobile_screen_share</i>
                       <span class="sidebar-normal"> {{ __('Bulk Recharge') }} </span>
                     </a>
@@ -176,8 +173,8 @@
                 <p>{{ __('Profile') }}</p>
             </a>
           </li>
-          <li class="nav-item{{ $activePage == 'operators' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('user.index') }}">
+          <li class="nav-item{{ $activePage == 'Operators' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('operators') }}">
               <i class="material-icons">business</i>
                 <p>{{ __('Operators') }}</p>
             </a>
