@@ -18,7 +18,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                 <div class="stats">
-                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                  <a href="#" class="btn btn-outline-primary btn-sm">
                       View Details
                   </a>
                   </div>
@@ -38,7 +38,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                 <div class="stats">
-                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                  <a href="#" class="btn btn-outline-primary btn-sm">
                       View Details
                   </a>
                   </div>
@@ -58,7 +58,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                 <div class="stats">
-                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                  <a href="#" class="btn btn-outline-primary btn-sm">
                       View Details
                   </a>
                   </div>
@@ -78,7 +78,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                   <div class="stats">
-                    <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                    <a href="#" class="btn btn-outline-primary btn-sm">
                         View Details
                     </a>
                   </div>
@@ -98,7 +98,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                 <div class="stats">
-                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                  <a href="#" class="btn btn-outline-primary btn-sm">
                       View Details
                   </a>
                   </div>
@@ -118,7 +118,7 @@
               <div class="card-footer">
                 <i class="material-icons">table_chart</i>
                 <div class="stats">
-                  <a href="{{ route('recharge') }}" class="btn btn-outline-primary btn-sm">
+                  <a href="#" class="btn btn-outline-primary btn-sm">
                       View Details
                   </a>
                   </div>
@@ -129,7 +129,7 @@
 
       <div class="row">
         {{-- Stock Balance Table --}}
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-5 col-md-5">
             <div class="card">
               <div class="card-header card-header-warning">
                 <h4 class="card-title">Stock Balance</h4>
@@ -166,7 +166,7 @@
           </div>
 
           {{-- Sales Table --}}
-          <div class="col-lg-6 col-md-6">
+          <div class="col-lg-7 col-md-7">
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Sales</h4>
@@ -179,6 +179,7 @@
                           <th class="center">#ID</th>
                           <th>Operator</th>
                           <th>Sales</th>
+                          <th>Time</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -189,6 +190,7 @@
                                   <td class="text-primary">
                                       <strong>{{ $recharge->amount }}</strong>
                                   </td>
+                                  <td>{{ $recharge->created_at }}</td>
                               </tr>
                           @endforeach
                         </tr>

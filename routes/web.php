@@ -15,6 +15,7 @@ use App\Operator;
 use App\Ticket;
 use App\Account;
 use App\Ledger;
+use App\Message;
 use Illuminate\Http\Request;
 
 
@@ -66,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('recharge.bulk_recharge');
 	})->name('bulk_recharge');
 
-    Route::post('recharge', function (Request $request) {
+    Route::post('topup_recharge', function (Request $request) {
         $user = Auth::user();
         $account = Account::where('user_id', $user->id)->first();
         if($account->balance > 0 && $request->amount <= $account->balance) {
@@ -76,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
             $recharge->amount = $request->amount;
             $recharge->type = $request->type;
             $recharge->operator = $request->operator;
-            $recharge->status = 'Succeed';
+            $recharge->status = 'Success';
             $recharge->save();
 
             $account->balance = $account->balance - $recharge->amount;
@@ -90,15 +91,15 @@ Route::group(['middleware' => 'auth'], function () {
             $ledger->description = $recharge->mobile_no.' Recharged with Tk.'.$recharge->amount.'. Ref: 0b5d6850-b02f-11e9-b82f-5d906471783f';
             $ledger->save();
 
-            return redirect('recharge')->withStatus(__('completed'));
+            return redirect('topup_recharge')->withStatus(__('completed'));
         }
 
-        return redirect('recharge')->withStatus(__('failed'));
+        return redirect('topup_recharge')->withStatus(__('failed'));
     })->name('recharge.edit');
 
     Route::get('ticket', function () {
 		return view('corporate_user.ticket');
-	})->name('ticket');
+	})->name('ticket.create');
 
     Route::post('ticket', function (Request $request) {
         $ticket = new Ticket;
@@ -107,35 +108,43 @@ Route::group(['middleware' => 'auth'], function () {
         $ticket->ticket_type = $request->ticket_type;
         $ticket->ticket_for = $request->ticket_for;
         $ticket->description = $request->description;
-        $ticket->status = 'Pending';
+        $ticket->status = 'Ongoing';
         $ticket->save();
 
         return redirect('ticket')->withStatus(__('Ticket Successfully Submitted'));
     })->name('ticket.edit');
 
+    Route::get('ongoing_tickets', function () {
+        $user = Auth::user();
+        $tickets = Ticket::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+		return view('corporate_user.ongoing_tickets', [
+            'tickets' => $tickets
+        ]);
+	})->name('ongoing_tickets');
+
 	Route::get('stock_balance', function () {
-        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+        $recharges = Recharge::orderBy('created_at', 'desc')->get();
 		return view('admin.stock_balance', [
             'recharges' => $recharges
         ]);
 	})->name('stock_balance');
 
 	Route::get('sales', function () {
-        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+        $recharges = Recharge::orderBy('created_at', 'desc')->get();
 		return view('admin.sales', [
             'recharges' => $recharges
         ]);
 	})->name('sales');
 
     Route::get('admin_recharge_report', function () {
-        $recharges = Recharge::orderBy('created_at', 'asc')->get();
+        $recharges = Recharge::orderBy('created_at', 'desc')->get();
 		return view('admin.recharge_report', [
             'recharges' => $recharges
         ]);
     })->name('admin_recharge_report');
 
     Route::get('admin_ticket', function () {
-        $tickets = Ticket::orderBy('created_at', 'asc')->get();
+        $tickets = Ticket::orderBy('created_at', 'desc')->get();
 		return view('admin.tickets', [
             'tickets' => $tickets
         ]);
@@ -147,15 +156,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('admin_invoice', function () {
 		return view('admin.invoice');
-	})->name('admin_invoice');
+    })->name('admin_invoice');
 
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
-
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
+    Route::get('admin_inbox', function () {
+        $messages = Message::orderBy('created_at', 'desc')->get();
+		return view('admin.inbox', [
+            'messages' => $messages
+        ]);
+	})->name('admin_inbox');
 });
 
 Route::group(['middleware' => 'auth'], function () {

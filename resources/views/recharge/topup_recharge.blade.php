@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'recharge', 'titlePage' => __('Recharge')])
+@extends('layouts.app', ['activePage' => 'TopUp Recharge', 'titlePage' => __('TopUp Recharge')])
 
 @section('content')
   <div class="content">
@@ -7,7 +7,6 @@
         <div class="col-md-12">
           <form method="post" action="{{ route('recharge.edit') }}" autocomplete="off" class="form-horizontal">
             @csrf
-
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Recharge') }}</h4>
@@ -18,13 +17,9 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="alert alert-success">
-                        {{-- <a href="{{ route('recharge_report') }}" class="btn btn-primary text-right">{{ __('View Report') }}</a> --}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <i class="material-icons">close</i>
                         </button>
-                        {{-- <button type="button" class="btn btn-info btn-sm close"  aria-label="Close">
-                            <a href="{{ route('recharge_report') }}">{{ __('View Report') }}</a>
-                        </button> --}}
                         <span>{{ 'Recharge Successfully Completed!' }}</span>
                       </div>
                     </div>

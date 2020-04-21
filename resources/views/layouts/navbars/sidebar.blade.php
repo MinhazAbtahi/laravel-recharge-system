@@ -62,12 +62,6 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'admin_recharge_report' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('admin_recharge_report') }}">
-          <i class="material-icons">timeline</i>
-          <p>{{ __('Recharge History') }}</p>
-        </a>
-      </li>
       <li class="nav-item{{ $activePage == 'requests' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">account_circle</i>
@@ -80,17 +74,67 @@
             <p>{{ __('Tickets') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-          <i class="material-icons">supervised_user_circle</i>
-          <p>{{ __('User Management') }}</p>
+      <li class="nav-item {{ ($activePage == 'Corporate') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#corporate" aria-expanded="false">
+          <!--<i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>-->
+          <i class="material-icons">mobile_screen_share</i>
+          <p>{{ __('Corporate') }}
+            <b class="caret"></b>
+          </p>
         </a>
+        <div class="collapse" id="corporate">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'Create Account' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('user.create') }}">
+                <i class="material-icons">mobile_screen_share</i>
+                <span class="sidebar-normal">{{ __('Create Account') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Users List' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('user.index') }}">
+                    <i class="material-icons">mobile_screen_share</i>
+                  <span class="sidebar-normal"> {{ __('Users List') }} </span>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Account Refill' ? ' active' : '' }}">
+                <a class="nav-link" href="#">
+                    <i class="material-icons">mobile_screen_share</i>
+                  <span class="sidebar-normal"> {{ __('Account Refill') }} </span>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Refill History' ? ' active' : '' }}">
+                <a class="nav-link" href="#">
+                    <i class="material-icons">mobile_screen_share</i>
+                  <span class="sidebar-normal"> {{ __('Refill History') }} </span>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Operator Selection' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('bulk_recharge') }}">
+                    <i class="material-icons">sim_card</i>
+                  <span class="sidebar-normal"> {{ __('Operator Selection') }} </span>
+                </a>
+            </li>
+          </ul>
+        </div>
       </li>
-      <li class="nav-item{{ $activePage == 'corporate' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">business</i>
-            <p>{{ __('Corporate') }}</p>
+      <li class="nav-item {{ ($activePage == 'User') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false">
+          <!--<i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>-->
+          <i class="material-icons">supervised_user_circle</i>
+          <p>{{ __('User') }}
+            <b class="caret"></b>
+          </p>
         </a>
+        <div class="collapse" id="user">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'Users List' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="material-icons">supervised_user_circle</i>
+                <span class="sidebar-normal">{{ __('Users List') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item{{ $activePage == 'invoice' ? ' active' : '' }}">
         <a class="nav-link" href="#">
@@ -98,12 +142,13 @@
             <p>{{ __('Invoice') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'inbox' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">business</i>
+      <li class="nav-item{{ $activePage == 'Inbox' ? ' active' : '' }}">
+      <a class="nav-link" href="{{ route('admin_inbox') }}">
+          <i class="material-icons">textsms</i>
             <p>{{ __('Inbox') }}</p>
         </a>
       </li>
+
     {{-- Corporate User --}}
       @elseif(Auth::user()->role == 'corporate user' || Auth::user()->role == 'user')
           <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
@@ -167,22 +212,47 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item {{ ($activePage == 'Tickets' || $activePage == '') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#tickets" aria-expanded="false">
+              <!--<i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>-->
+              <i class="material-icons">live_help</i>
+              <p>{{ __('Tickets') }}
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="tickets">
+              <ul class="nav">
+                <li class="nav-item{{ $activePage == 'Create Ticket' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('ticket.create') }}">
+                    <i class="material-icons">live_help</i>
+                    <span class="sidebar-normal">{{ __('Create Ticket') }} </span>
+                  </a>
+                </li>
+                <li class="nav-item{{ $activePage == 'Ongoing Tickets' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('ongoing_tickets') }}">
+                        <i class="material-icons">live_help</i>
+                      <span class="sidebar-normal"> {{ __('Ongoing Tickets') }} </span>
+                    </a>
+                </li>
+                <li class="nav-item{{ $activePage == 'bulk_recharge' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('bulk_recharge') }}">
+                        <i class="material-icons">live_help</i>
+                      <span class="sidebar-normal"> {{ __('Resolved Tickets') }} </span>
+                    </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item{{ $activePage == 'Operators' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('operators') }}">
+              <i class="material-icons">sim_card</i>
+                <p>{{ __('Operators') }}</p>
+            </a>
+          </li>
           <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('profile.edit') }}">
               <i class="material-icons">account_circle</i>
                 <p>{{ __('Profile') }}</p>
-            </a>
-          </li>
-          <li class="nav-item{{ $activePage == 'Operators' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('operators') }}">
-              <i class="material-icons">business</i>
-                <p>{{ __('Operators') }}</p>
-            </a>
-          </li>
-          <li class="nav-item{{ $activePage == 'tickets' ? ' active' : '' }}">
-            <a class="nav-link" href="{{ route('ticket') }}">
-              <i class="material-icons">live_help</i>
-                <p>{{ __('Tickets') }}</p>
             </a>
           </li>
     @endif

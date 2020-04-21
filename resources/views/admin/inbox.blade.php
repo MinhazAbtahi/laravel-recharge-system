@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Sales', 'titlePage' => __('Sales')])
+@extends('layouts.app', ['activePage' => 'Inbox', 'titlePage' => __('Inbox')])
 
 @section('content')
 <div class="content">
@@ -7,29 +7,31 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Sales</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+            <h4 class="card-title ">Inbox</h4>
+            <p class="card-category"> Message from diffrent Operators</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-hover">
                 <thead class=" text-primary">
                   <tr>
-                    <th class="center">#ID</th>
+                    <th class="center">Sender</th>
                     <th>Operator</th>
-                    <th>Sales</th>
+                    <th>Message</th>
                     <th>Time</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($recharges as $recharge)
+                    @foreach ($messages as $message)
                         <tr>
-                            <td>{{ $recharge->id }}</td>
-                            <td>{{ $recharge->operator }}</td>
+                            <td>{{ $message->sender }}</td>
                             <td class="text-primary">
-                                <strong>{{ $recharge->amount }}</strong>
+                                <td>{{ $message->operator }}</td>
                             </td>
-                            <td>{{ $recharge->created_at }}</td>
+                            <td class="text-primary">
+                                <td>{{ $message->description }}</td>
+                            </td>
+                            <td>{{ $message->created_at }}</td>
                         </tr>
                     @endforeach
                   </tr>
