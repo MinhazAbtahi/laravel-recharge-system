@@ -62,6 +62,30 @@
           </ul>
         </div>
       </li>
+      <li class="nav-item {{ ($activePage == 'Recharge Report' || $activePage == 'Refill Report') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false">
+        <i class="material-icons">timeline</i>
+          <p>{{ __('Reports') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="report">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'Recharge Report' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('admin_recharge_report') }}">
+                <i class="material-icons">timeline</i>
+                <span class="sidebar-normal">{{ __('Recharge Report') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Refill Report' ? ' active' : '' }}">
+                <a class="nav-link" href="#">
+                    <i class="material-icons">timeline</i>
+                  <span class="sidebar-normal"> {{ __('Refill Report') }} </span>
+                </a>
+            </li>
+          </ul>
+        </div>
+      </li>
       <li class="nav-item{{ $activePage == 'Requests' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('admin_requests') }}">
           <i class="material-icons">account_circle</i>

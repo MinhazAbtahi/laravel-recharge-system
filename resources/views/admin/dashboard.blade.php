@@ -12,7 +12,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Pending Requests</p>
-                <h3 class="card-title">32
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
@@ -32,7 +32,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Unpaid Requests</p>
-                <h3 class="card-title">20
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
@@ -52,7 +52,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Successful Requests</p>
-                <h3 class="card-title">50
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
@@ -72,7 +72,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Failed Requests</p>
-                <h3 class="card-title">42
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
@@ -92,7 +92,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Total Requests</p>
-                <h3 class="card-title">150
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
@@ -112,7 +112,7 @@
                   <i class="material-icons">assessment</i>
                 </div>
                 <p class="card-category">Successful Recharge</p>
-                <h3 class="card-title">50
+                <h3 class="card-title">0
                 </h3>
               </div>
               <div class="card-footer">
