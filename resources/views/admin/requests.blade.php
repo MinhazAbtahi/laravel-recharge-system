@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Tickets', 'titlePage' => __('Tickets')])
+@extends('layouts.app', ['activePage' => 'Requests', 'titlePage' => __('Requests')])
 
 @section('content')
 <div class="content">
@@ -7,8 +7,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Tickets</h4>
-            <p class="card-category"> All Tickets from Users</p>
+            <h4 class="card-title ">Requests</h4>
+            <p class="card-category"> All Requests from Users</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -18,8 +18,7 @@
                     <th class="center">#ID</th>
                     <th>User</th>
                     <th>User ID</th>
-                    <th>Ticket Type</th>
-                    <th>Ticket For</th>
+                    <th>Request For</th>
                     <th>Description</th>
                     <th>Status</th>
                     <th>Date & Time</th>
@@ -34,9 +33,6 @@
                             </td>
                             <td class="text-primary">
                                 <strong>{{ $ticket->user_id }}</strong>
-                            </td>
-                            <td class="text-secondary">
-                                <strong>{{ $ticket->ticket_type }}</strong>
                             </td>
                             <td class="text-secondary">
                                 <strong>{{ $ticket->ticket_for }}</strong>

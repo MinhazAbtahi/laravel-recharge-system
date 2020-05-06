@@ -150,6 +150,13 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
     })->name('admin_ticket');
 
+    Route::get('admin_requests', function () {
+        $tickets = Ticket::where('ticket_type', 'Request')->orderBy('created_at', 'desc')->get();
+		return view('admin.requests', [
+            'tickets' => $tickets
+        ]);
+	})->name('admin_requests');
+
 	Route::get('recharge_request', function () {
 		return view('admin.recharge_request');
 	})->name('recharge_request');

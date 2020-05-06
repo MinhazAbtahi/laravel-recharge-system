@@ -47,12 +47,12 @@
                 <span class="sidebar-normal">{{ __('TopUp Recharge') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
+            {{-- <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('skitto_recharge') }}">
                     <i class="material-icons">mobile_screen_share</i>
                   <span class="sidebar-normal"> {{ __('Skitto Recharge') }} </span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item{{ $activePage == 'bulk_recharge' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('bulk_recharge') }}">
                     <i class="material-icons">mobile_screen_share</i>
@@ -62,8 +62,8 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'requests' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'Requests' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('admin_requests') }}">
           <i class="material-icons">account_circle</i>
             <p>{{ __('Requests') }}</p>
         </a>
@@ -173,12 +173,12 @@
                     <span class="sidebar-normal">{{ __('TopUp Recharge') }} </span>
                   </a>
                 </li>
-                <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
+                {{-- <li class="nav-item{{ $activePage == 'skitto_recharge' ? ' active' : '' }}">
                     <a class="nav-link" href="{{ route('skitto_recharge') }}">
                         <i class="material-icons">mobile_screen_share</i>
                       <span class="sidebar-normal"> {{ __('Skitto Recharge') }} </span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item{{ $activePage == 'bulk_recharge' ? ' active' : '' }}">
                     <a class="nav-link" href="{{ route('bulk_recharge') }}">
                         <i class="material-icons">mobile_screen_share</i>

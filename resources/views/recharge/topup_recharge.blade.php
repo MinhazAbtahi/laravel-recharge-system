@@ -10,7 +10,7 @@
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Recharge') }}</h4>
-                <p class="card-category">{{ __('User information') }}</p>
+                <p class="card-category">{{ __('Top Up Recharge') }}</p>
               </div>
               <div class="card-body ">
                 @if (session('status') == 'completed')
